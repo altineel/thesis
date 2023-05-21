@@ -119,7 +119,11 @@ class MCTSSolver(ABC, Generic[TAction, TNode, TRandom]):
 
     def extract_min_reward_some_visited(self):
         children = [child for child in self.root().children if child.n > 50]
-        return max(children, key=lambda c: c.reward / c.n)
+        try:
+            return max(children, key=lambda c: c.reward / c.n)
+        except:
+            children = [child for child in self.root().children if child.n > 10]
+            return max(children, key=lambda c: c.reward / c.n)
 
     def display_node(self, node: TNode) -> None:
         if node.parent != None:
