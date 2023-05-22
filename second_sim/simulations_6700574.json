@@ -1,0 +1,1103 @@
+{
+    "0000": "STARTED",
+    "----- Simulation 0 -----": 670057400,
+    "670057400_FUEL PRICES ": [
+        1000,
+        1200,
+        600.0,
+        825.0
+    ],
+    "670057400_FUEL LEVEL BEFORE: 0": 31.0,
+    "670057400_ACTION _0_to_1": [
+        "Bunker Amt: 31",
+        "Bunkering Cost: 38000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 1.0"
+    ],
+    "670057400_FUEL LEVEL BEFORE: 1": 25.0,
+    "670057400_ACTION _1_to_2": [
+        "Bunker Amt: 24",
+        "Bunkering Cost: 33800.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 1.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057400_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057400_ACTION _2_to_3": [
+        "Bunker Amt: 45",
+        "Bunkering Cost: 28000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057400_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057400_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057400_FUEL COSTS": 99800.0,
+    "670057400_TIME PENALTY COSTS": 0.0,
+    "670057400_FINAL COST": 99800.0,
+    "670057400670057400670057400670057400_": "FINISHED",
+    "1111": "STARTED",
+    "----- Simulation 1 -----": 670057401,
+    "670057401_FUEL PRICES ": [
+        1000,
+        1200,
+        600.0,
+        1031.25
+    ],
+    "670057401_FUEL LEVEL BEFORE: 0": 30.0,
+    "670057401_ACTION _0_to_1": [
+        "Bunker Amt: 30",
+        "Bunkering Cost: 37000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057401_FUEL LEVEL BEFORE: 1": 25.0,
+    "670057401_ACTION _1_to_2": [
+        "Bunker Amt: 25",
+        "Bunkering Cost: 35000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057401_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057401_ACTION _2_to_3": [
+        "Bunker Amt: 45",
+        "Bunkering Cost: 28000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057401_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057401_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057401_FUEL COSTS": 100000.0,
+    "670057401_TIME PENALTY COSTS": 0.0,
+    "670057401_FINAL COST": 100000.0,
+    "670057401670057401670057401670057401_": "FINISHED",
+    "2222": "STARTED",
+    "----- Simulation 2 -----": 670057402,
+    "670057402_FUEL PRICES ": [
+        1000,
+        1200,
+        919.9999999999999,
+        1454.7499999999998
+    ],
+    "670057402_FUEL LEVEL BEFORE: 0": 31.0,
+    "670057402_ACTION _0_to_1": [
+        "Bunker Amt: 31",
+        "Bunkering Cost: 38000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 1.0"
+    ],
+    "670057402_FUEL LEVEL BEFORE: 1": 30.0,
+    "670057402_ACTION _1_to_2": [
+        "Bunker Amt: 29",
+        "Bunkering Cost: 39800.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 1.0",
+        "Fuel Level After Travel: 5.0"
+    ],
+    "670057402_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057402_ACTION _2_to_3": [
+        "Bunker Amt: 40",
+        "Bunkering Cost: 37800.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 5.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057402_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057402_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057402_FUEL COSTS": 115600.0,
+    "670057402_TIME PENALTY COSTS": 0.0,
+    "670057402_FINAL COST": 115600.0,
+    "670057402670057402670057402670057402_": "FINISHED",
+    "3333": "STARTED",
+    "----- Simulation 3 -----": 670057403,
+    "670057403_FUEL PRICES ": [
+        1000,
+        1500.0,
+        1250.0,
+        1289.0625
+    ],
+    "670057403_FUEL LEVEL BEFORE: 0": 45.0,
+    "670057403_ACTION _0_to_1": [
+        "Bunker Amt: 45",
+        "Bunkering Cost: 52000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057403_FUEL LEVEL BEFORE: 1": 29.0,
+    "670057403_ACTION _1_to_2": [
+        "Bunker Amt: 14",
+        "Bunkering Cost: 26000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 4.0"
+    ],
+    "670057403_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057403_ACTION _2_to_3": [
+        "Bunker Amt: 41",
+        "Bunkering Cost: 52250.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 4.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057403_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057403_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057403_FUEL COSTS": 130250.0,
+    "670057403_TIME PENALTY COSTS": 0.0,
+    "670057403_FINAL COST": 130250.0,
+    "670057403670057403670057403670057403_": "FINISHED",
+    "4444": "STARTED",
+    "----- Simulation 4 -----": 670057404,
+    "670057404_FUEL PRICES ": [
+        1000,
+        1020.0,
+        509.99999999999994,
+        701.25
+    ],
+    "670057404_FUEL LEVEL BEFORE: 0": 30.0,
+    "670057404_ACTION _0_to_1": [
+        "Bunker Amt: 30",
+        "Bunkering Cost: 37000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057404_FUEL LEVEL BEFORE: 1": 31.0,
+    "670057404_ACTION _1_to_2": [
+        "Bunker Amt: 31",
+        "Bunkering Cost: 36620.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 6.0"
+    ],
+    "670057404_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057404_ACTION _2_to_3": [
+        "Bunker Amt: 39",
+        "Bunkering Cost: 20890.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 6.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057404_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057404_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057404_FUEL COSTS": 94510.0,
+    "670057404_TIME PENALTY COSTS": 0.0,
+    "670057404_FINAL COST": 94510.0,
+    "670057404670057404670057404670057404_": "FINISHED",
+    "5555": "STARTED",
+    "----- Simulation 5 -----": 670057405,
+    "670057405_FUEL PRICES ": [
+        1000,
+        1500.0,
+        1000.0,
+        1168.75
+    ],
+    "670057405_FUEL LEVEL BEFORE: 0": 49.0,
+    "670057405_ACTION _0_to_1": [
+        "Bunker Amt: 49",
+        "Bunkering Cost: 56000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 19.0"
+    ],
+    "670057405_FUEL LEVEL BEFORE: 1": 29.0,
+    "670057405_ACTION _1_to_2": [
+        "Bunker Amt: 10",
+        "Bunkering Cost: 20000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 19.0",
+        "Fuel Level After Travel: 4.0"
+    ],
+    "670057405_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057405_ACTION _2_to_3": [
+        "Bunker Amt: 41",
+        "Bunkering Cost: 42000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 4.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057405_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057405_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057405_FUEL COSTS": 118000.0,
+    "670057405_TIME PENALTY COSTS": 0.0,
+    "670057405_FINAL COST": 118000.0,
+    "670057405670057405670057405670057405_": "FINISHED",
+    "6666": "STARTED",
+    "----- Simulation 6 -----": 670057406,
+    "670057406_FUEL PRICES ": [
+        1000,
+        900.0,
+        509.99999999999994,
+        876.5625
+    ],
+    "670057406_FUEL LEVEL BEFORE: 0": 44.0,
+    "670057406_ACTION _0_to_1": [
+        "Bunker Amt: 44",
+        "Bunkering Cost: 51000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 14.0"
+    ],
+    "670057406_FUEL LEVEL BEFORE: 1": 27.0,
+    "670057406_ACTION _1_to_2": [
+        "Bunker Amt: 13",
+        "Bunkering Cost: 16700.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 14.0",
+        "Fuel Level After Travel: 2.0"
+    ],
+    "670057406_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057406_ACTION _2_to_3": [
+        "Bunker Amt: 43",
+        "Bunkering Cost: 22930.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 2.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057406_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057406_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057406_FUEL COSTS": 90630.0,
+    "670057406_TIME PENALTY COSTS": 0.0,
+    "670057406_FINAL COST": 90630.0,
+    "670057406670057406670057406670057406_": "FINISHED",
+    "7777": "STARTED",
+    "----- Simulation 7 -----": 670057407,
+    "670057407_FUEL PRICES ": [
+        1000,
+        1500.0,
+        850.0,
+        1460.9375
+    ],
+    "670057407_FUEL LEVEL BEFORE: 0": 32.0,
+    "670057407_ACTION _0_to_1": [
+        "Bunker Amt: 32",
+        "Bunkering Cost: 39000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 2.0"
+    ],
+    "670057407_FUEL LEVEL BEFORE: 1": 27.0,
+    "670057407_ACTION _1_to_2": [
+        "Bunker Amt: 25",
+        "Bunkering Cost: 42500.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 2.0",
+        "Fuel Level After Travel: 2.0"
+    ],
+    "670057407_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057407_ACTION _2_to_3": [
+        "Bunker Amt: 43",
+        "Bunkering Cost: 37550.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 2.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057407_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057407_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057407_FUEL COSTS": 119050.0,
+    "670057407_TIME PENALTY COSTS": 0.0,
+    "670057407_FINAL COST": 119050.0,
+    "670057407670057407670057407670057407_": "FINISHED",
+    "8888": "STARTED",
+    "----- Simulation 8 -----": 670057408,
+    "670057408_FUEL PRICES ": [
+        1000,
+        900.0,
+        450.0,
+        525.9375
+    ],
+    "670057408_FUEL LEVEL BEFORE: 0": 36.0,
+    "670057408_ACTION _0_to_1": [
+        "Bunker Amt: 36",
+        "Bunkering Cost: 43000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 6.0"
+    ],
+    "670057408_FUEL LEVEL BEFORE: 1": 28.0,
+    "670057408_ACTION _1_to_2": [
+        "Bunker Amt: 22",
+        "Bunkering Cost: 24800.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 6.0",
+        "Fuel Level After Travel: 3.0"
+    ],
+    "670057408_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057408_ACTION _2_to_3": [
+        "Bunker Amt: 42",
+        "Bunkering Cost: 19900.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 3.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057408_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057408_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057408_FUEL COSTS": 87700.0,
+    "670057408_TIME PENALTY COSTS": 0.0,
+    "670057408_FINAL COST": 87700.0,
+    "670057408670057408670057408670057408_": "FINISHED",
+    "9999": "STARTED",
+    "----- Simulation 9 -----": 670057409,
+    "670057409_FUEL PRICES ": [
+        1000,
+        1380.0,
+        1150.0,
+        1344.0625
+    ],
+    "670057409_FUEL LEVEL BEFORE: 0": 31.0,
+    "670057409_ACTION _0_to_1": [
+        "Bunker Amt: 31",
+        "Bunkering Cost: 38000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 1.0"
+    ],
+    "670057409_FUEL LEVEL BEFORE: 1": 27.0,
+    "670057409_ACTION _1_to_2": [
+        "Bunker Amt: 26",
+        "Bunkering Cost: 40880.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 1.0",
+        "Fuel Level After Travel: 2.0"
+    ],
+    "670057409_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057409_ACTION _2_to_3": [
+        "Bunker Amt: 43",
+        "Bunkering Cost: 50450.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 2.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057409_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057409_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057409_FUEL COSTS": 129330.0,
+    "670057409_TIME PENALTY COSTS": 0.0,
+    "670057409_FINAL COST": 129330.0,
+    "670057409670057409670057409670057409_": "FINISHED",
+    "10101010": "STARTED",
+    "----- Simulation 10 -----": 670057410,
+    "670057410_FUEL PRICES ": [
+        1000,
+        900.0,
+        750.0,
+        1031.25
+    ],
+    "670057410_FUEL LEVEL BEFORE: 0": 40.0,
+    "670057410_ACTION _0_to_1": [
+        "Bunker Amt: 40",
+        "Bunkering Cost: 47000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 10.0"
+    ],
+    "670057410_FUEL LEVEL BEFORE: 1": 28.0,
+    "670057410_ACTION _1_to_2": [
+        "Bunker Amt: 18",
+        "Bunkering Cost: 21200.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 10.0",
+        "Fuel Level After Travel: 3.0"
+    ],
+    "670057410_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057410_ACTION _2_to_3": [
+        "Bunker Amt: 42",
+        "Bunkering Cost: 32500.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 3.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057410_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057410_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057410_FUEL COSTS": 100700.0,
+    "670057410_TIME PENALTY COSTS": 0.0,
+    "670057410_FINAL COST": 100700.0,
+    "670057410670057410670057410670057410_": "FINISHED",
+    "11111111": "STARTED",
+    "----- Simulation 11 -----": 670057411,
+    "670057411_FUEL PRICES ": [
+        1000,
+        900.0,
+        690.0,
+        1185.9375
+    ],
+    "670057411_FUEL LEVEL BEFORE: 0": 39.0,
+    "670057411_ACTION _0_to_1": [
+        "Bunker Amt: 39",
+        "Bunkering Cost: 46000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 9.0"
+    ],
+    "670057411_FUEL LEVEL BEFORE: 1": 28.0,
+    "670057411_ACTION _1_to_2": [
+        "Bunker Amt: 19",
+        "Bunkering Cost: 22100.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 9.0",
+        "Fuel Level After Travel: 3.0"
+    ],
+    "670057411_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057411_ACTION _2_to_3": [
+        "Bunker Amt: 42",
+        "Bunkering Cost: 29980.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 3.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057411_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057411_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057411_FUEL COSTS": 98080.0,
+    "670057411_TIME PENALTY COSTS": 0.0,
+    "670057411_FINAL COST": 98080.0,
+    "670057411670057411670057411670057411_": "FINISHED",
+    "12121212": "STARTED",
+    "----- Simulation 12 -----": 670057412,
+    "670057412_FUEL PRICES ": [
+        1000,
+        1380.0,
+        1150.0,
+        1581.25
+    ],
+    "670057412_FUEL LEVEL BEFORE: 0": 42.0,
+    "670057412_ACTION _0_to_1": [
+        "Bunker Amt: 42",
+        "Bunkering Cost: 49000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 12.0"
+    ],
+    "670057412_FUEL LEVEL BEFORE: 1": 29.0,
+    "670057412_ACTION _1_to_2": [
+        "Bunker Amt: 17",
+        "Bunkering Cost: 28460.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 12.0",
+        "Fuel Level After Travel: 4.0"
+    ],
+    "670057412_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057412_ACTION _2_to_3": [
+        "Bunker Amt: 41",
+        "Bunkering Cost: 48150.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 4.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057412_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057412_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057412_FUEL COSTS": 125610.0,
+    "670057412_TIME PENALTY COSTS": 0.0,
+    "670057412_FINAL COST": 125610.0,
+    "670057412670057412670057412670057412_": "FINISHED",
+    "13131313": "STARTED",
+    "----- Simulation 13 -----": 670057413,
+    "670057413_FUEL PRICES ": [
+        1000,
+        1200,
+        800,
+        1375.0
+    ],
+    "670057413_FUEL LEVEL BEFORE: 0": 35.0,
+    "670057413_ACTION _0_to_1": [
+        "Bunker Amt: 35",
+        "Bunkering Cost: 42000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 5.0"
+    ],
+    "670057413_FUEL LEVEL BEFORE: 1": 29.0,
+    "670057413_ACTION _1_to_2": [
+        "Bunker Amt: 24",
+        "Bunkering Cost: 33800.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 5.0",
+        "Fuel Level After Travel: 4.0"
+    ],
+    "670057413_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057413_ACTION _2_to_3": [
+        "Bunker Amt: 41",
+        "Bunkering Cost: 33800.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 4.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057413_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057413_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057413_FUEL COSTS": 109600.0,
+    "670057413_TIME PENALTY COSTS": 0.0,
+    "670057413_FINAL COST": 109600.0,
+    "670057413670057413670057413670057413_": "FINISHED",
+    "14141414": "STARTED",
+    "----- Simulation 14 -----": 670057414,
+    "670057414_FUEL PRICES ": [
+        1000,
+        1500.0,
+        850.0,
+        993.4375
+    ],
+    "670057414_FUEL LEVEL BEFORE: 0": 38.0,
+    "670057414_ACTION _0_to_1": [
+        "Bunker Amt: 38",
+        "Bunkering Cost: 45000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 8.0"
+    ],
+    "670057414_FUEL LEVEL BEFORE: 1": 26.0,
+    "670057414_ACTION _1_to_2": [
+        "Bunker Amt: 18",
+        "Bunkering Cost: 32000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 8.0",
+        "Fuel Level After Travel: 1.0"
+    ],
+    "670057414_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057414_ACTION _2_to_3": [
+        "Bunker Amt: 44",
+        "Bunkering Cost: 38400.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 1.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057414_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057414_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057414_FUEL COSTS": 115400.0,
+    "670057414_TIME PENALTY COSTS": 0.0,
+    "670057414_FINAL COST": 115400.0,
+    "670057414670057414670057414670057414_": "FINISHED",
+    "15151515": "STARTED",
+    "----- Simulation 15 -----": 670057415,
+    "670057415_FUEL PRICES ": [
+        1000,
+        1020.0,
+        509.99999999999994,
+        701.25
+    ],
+    "670057415_FUEL LEVEL BEFORE: 0": 30.0,
+    "670057415_ACTION _0_to_1": [
+        "Bunker Amt: 30",
+        "Bunkering Cost: 37000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057415_FUEL LEVEL BEFORE: 1": 28.0,
+    "670057415_ACTION _1_to_2": [
+        "Bunker Amt: 28",
+        "Bunkering Cost: 33560.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 3.0"
+    ],
+    "670057415_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057415_ACTION _2_to_3": [
+        "Bunker Amt: 42",
+        "Bunkering Cost: 22420.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 3.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057415_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057415_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057415_FUEL COSTS": 92980.0,
+    "670057415_TIME PENALTY COSTS": 0.0,
+    "670057415_FINAL COST": 92980.0,
+    "670057415670057415670057415670057415_": "FINISHED",
+    "16161616": "STARTED",
+    "----- Simulation 16 -----": 670057416,
+    "670057416_FUEL PRICES ": [
+        1000,
+        1020.0,
+        680.0,
+        794.7499999999999
+    ],
+    "670057416_FUEL LEVEL BEFORE: 0": 45.0,
+    "670057416_ACTION _0_to_1": [
+        "Bunker Amt: 45",
+        "Bunkering Cost: 52000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057416_FUEL LEVEL BEFORE: 1": 25.0,
+    "670057416_ACTION _1_to_2": [
+        "Bunker Amt: 10",
+        "Bunkering Cost: 15200.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057416_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057416_ACTION _2_to_3": [
+        "Bunker Amt: 45",
+        "Bunkering Cost: 31600.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057416_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057416_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057416_FUEL COSTS": 98800.0,
+    "670057416_TIME PENALTY COSTS": 0.0,
+    "670057416_FINAL COST": 98800.0,
+    "670057416670057416670057416670057416_": "FINISHED",
+    "17171717": "STARTED",
+    "----- Simulation 17 -----": 670057417,
+    "670057417_FUEL PRICES ": [
+        1000,
+        1380.0,
+        781.9999999999999,
+        913.9624999999999
+    ],
+    "670057417_FUEL LEVEL BEFORE: 0": 37.0,
+    "670057417_ACTION _0_to_1": [
+        "Bunker Amt: 37",
+        "Bunkering Cost: 44000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 7.0"
+    ],
+    "670057417_FUEL LEVEL BEFORE: 1": 30.0,
+    "670057417_ACTION _1_to_2": [
+        "Bunker Amt: 23",
+        "Bunkering Cost: 36740.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 7.0",
+        "Fuel Level After Travel: 5.0"
+    ],
+    "670057417_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057417_ACTION _2_to_3": [
+        "Bunker Amt: 40",
+        "Bunkering Cost: 32280.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 5.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057417_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057417_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057417_FUEL COSTS": 113020.0,
+    "670057417_TIME PENALTY COSTS": 0.0,
+    "670057417_FINAL COST": 113020.0,
+    "670057417670057417670057417670057417_": "FINISHED",
+    "18181818": "STARTED",
+    "----- Simulation 18 -----": 670057418,
+    "670057418_FUEL PRICES ": [
+        1000,
+        900.0,
+        600.0,
+        825.0
+    ],
+    "670057418_FUEL LEVEL BEFORE: 0": 30.0,
+    "670057418_ACTION _0_to_1": [
+        "Bunker Amt: 30",
+        "Bunkering Cost: 37000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057418_FUEL LEVEL BEFORE: 1": 26.0,
+    "670057418_ACTION _1_to_2": [
+        "Bunker Amt: 26",
+        "Bunkering Cost: 28400.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 1.0"
+    ],
+    "670057418_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057418_ACTION _2_to_3": [
+        "Bunker Amt: 44",
+        "Bunkering Cost: 27400.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 1.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057418_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057418_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057418_FUEL COSTS": 92800.0,
+    "670057418_TIME PENALTY COSTS": 0.0,
+    "670057418_FINAL COST": 92800.0,
+    "670057418670057418670057418670057418_": "FINISHED",
+    "19191919": "STARTED",
+    "----- Simulation 19 -----": 670057419,
+    "670057419_FUEL PRICES ": [
+        1000,
+        1200,
+        1000.0,
+        1581.25
+    ],
+    "670057419_FUEL LEVEL BEFORE: 0": 30.0,
+    "670057419_ACTION _0_to_1": [
+        "Bunker Amt: 30",
+        "Bunkering Cost: 37000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057419_FUEL LEVEL BEFORE: 1": 25.0,
+    "670057419_ACTION _1_to_2": [
+        "Bunker Amt: 25",
+        "Bunkering Cost: 35000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057419_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057419_ACTION _2_to_3": [
+        "Bunker Amt: 45",
+        "Bunkering Cost: 46000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057419_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057419_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057419_FUEL COSTS": 118000.0,
+    "670057419_TIME PENALTY COSTS": 0.0,
+    "670057419_FINAL COST": 118000.0,
+    "670057419670057419670057419670057419_": "FINISHED",
+    "20202020": "STARTED",
+    "----- Simulation 20 -----": 670057420,
+    "670057420_FUEL PRICES ": [
+        1000,
+        900.0,
+        509.99999999999994,
+        596.0625
+    ],
+    "670057420_FUEL LEVEL BEFORE: 0": 30.0,
+    "670057420_ACTION _0_to_1": [
+        "Bunker Amt: 30",
+        "Bunkering Cost: 37000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057420_FUEL LEVEL BEFORE: 1": 29.0,
+    "670057420_ACTION _1_to_2": [
+        "Bunker Amt: 29",
+        "Bunkering Cost: 31100.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 4.0"
+    ],
+    "670057420_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057420_ACTION _2_to_3": [
+        "Bunker Amt: 41",
+        "Bunkering Cost: 21910.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 4.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057420_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057420_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057420_FUEL COSTS": 90010.0,
+    "670057420_TIME PENALTY COSTS": 0.0,
+    "670057420_FINAL COST": 90010.0,
+    "670057420670057420670057420670057420_": "FINISHED",
+    "21212121": "STARTED",
+    "----- Simulation 21 -----": 670057421,
+    "670057421_FUEL PRICES ": [
+        1000,
+        1020.0,
+        509.99999999999994,
+        596.0625
+    ],
+    "670057421_FUEL LEVEL BEFORE: 0": 39.0,
+    "670057421_ACTION _0_to_1": [
+        "Bunker Amt: 39",
+        "Bunkering Cost: 46000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 9.0"
+    ],
+    "670057421_FUEL LEVEL BEFORE: 1": 26.0,
+    "670057421_ACTION _1_to_2": [
+        "Bunker Amt: 17",
+        "Bunkering Cost: 22340.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 9.0",
+        "Fuel Level After Travel: 1.0"
+    ],
+    "670057421_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057421_ACTION _2_to_3": [
+        "Bunker Amt: 44",
+        "Bunkering Cost: 23440.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 1.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057421_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057421_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057421_FUEL COSTS": 91780.0,
+    "670057421_TIME PENALTY COSTS": 0.0,
+    "670057421_FINAL COST": 91780.0,
+    "670057421670057421670057421670057421_": "FINISHED",
+    "22222222": "STARTED",
+    "----- Simulation 22 -----": 670057422,
+    "670057422_FUEL PRICES ": [
+        1000,
+        1200,
+        800,
+        1375.0
+    ],
+    "670057422_FUEL LEVEL BEFORE: 0": 30.0,
+    "670057422_ACTION _0_to_1": [
+        "Bunker Amt: 30",
+        "Bunkering Cost: 37000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057422_FUEL LEVEL BEFORE: 1": 25.0,
+    "670057422_ACTION _1_to_2": [
+        "Bunker Amt: 25",
+        "Bunkering Cost: 35000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057422_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057422_ACTION _2_to_3": [
+        "Bunker Amt: 45",
+        "Bunkering Cost: 37000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057422_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057422_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057422_FUEL COSTS": 109000.0,
+    "670057422_TIME PENALTY COSTS": 0.0,
+    "670057422_FINAL COST": 109000.0,
+    "670057422670057422670057422670057422_": "FINISHED",
+    "23232323": "STARTED",
+    "----- Simulation 23 -----": 670057423,
+    "670057423_FUEL PRICES ": [
+        1000,
+        1500.0,
+        1250.0,
+        1289.0625
+    ],
+    "670057423_FUEL LEVEL BEFORE: 0": 47.0,
+    "670057423_ACTION _0_to_1": [
+        "Bunker Amt: 47",
+        "Bunkering Cost: 54000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 17.0"
+    ],
+    "670057423_FUEL LEVEL BEFORE: 1": 25.0,
+    "670057423_ACTION _1_to_2": [
+        "Bunker Amt: 8",
+        "Bunkering Cost: 17000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 17.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057423_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057423_ACTION _2_to_3": [
+        "Bunker Amt: 45",
+        "Bunkering Cost: 57250.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057423_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057423_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057423_FUEL COSTS": 128250.0,
+    "670057423_TIME PENALTY COSTS": 0.0,
+    "670057423_FINAL COST": 128250.0,
+    "670057423670057423670057423670057423_": "FINISHED",
+    "24242424": "STARTED",
+    "----- Simulation 24 -----": 670057424,
+    "670057424_FUEL PRICES ": [
+        1000,
+        1500.0,
+        850.0,
+        1344.0624999999998
+    ],
+    "670057424_FUEL LEVEL BEFORE: 0": 46.0,
+    "670057424_ACTION _0_to_1": [
+        "Bunker Amt: 46",
+        "Bunkering Cost: 53000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 0.0",
+        "Fuel Level After Travel: 16.0"
+    ],
+    "670057424_FUEL LEVEL BEFORE: 1": 32.0,
+    "670057424_ACTION _1_to_2": [
+        "Bunker Amt: 16",
+        "Bunkering Cost: 29000.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 16.0",
+        "Fuel Level After Travel: 7.0"
+    ],
+    "670057424_FUEL LEVEL BEFORE: 2": 45.0,
+    "670057424_ACTION _2_to_3": [
+        "Bunker Amt: 38",
+        "Bunkering Cost: 33300.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 7.0",
+        "Fuel Level After Travel: 15.0"
+    ],
+    "670057424_FUEL LEVEL BEFORE: 3": 15.0,
+    "670057424_ACTION _3_to_0": [
+        "Bunker Amt: 0",
+        "Bunkering Cost: 0.0",
+        "Speed: 1",
+        "Fuel Level Before Travel: 15.0",
+        "Fuel Level After Travel: 0.0"
+    ],
+    "670057424_FUEL COSTS": 115300.0,
+    "670057424_TIME PENALTY COSTS": 0.0,
+    "670057424_FINAL COST": 115300.0,
+    "670057424670057424670057424670057424_": "FINISHED",
+    "CREATED_AT": 1684698295.2802024
+}
