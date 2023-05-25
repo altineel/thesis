@@ -1,5 +1,5 @@
 from sim_environ.cost_functions import *
-from common.properties import FILENAME_SP
+from common.properties import FILENAME_SP, STOCH_PROBS
 import pickle as pkl
 
 
