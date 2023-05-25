@@ -6,166 +6,169 @@ from sim_environ.simulator import *
 from common import *
 import itertools
 import time
-import policies
-from solver.mip_stoch_solve import *
-from solver.mip_deter_solve import *
+from policies.policy_mcts import policy_mcts_stateful
 from tqdm import tqdm
 import random
-from policies.policy_lp import *
-from policies.policy_sp import *
-
-dist_mat = DIST_MAT
-
-# with open(FILENAME_DM, 'rb') as f:
-#     dist_mat = pkl.load(f)
-
-schedule = ROUTE_SCHEDULE[1:]
-
-# solve_mip_stoch()
-# solve_mip_deter()
-
-costs_sp = []
-fuel_costs_sp = []
-
-costs_lp = []
-fuel_costs_lp = []
+from common import save_config
 
 
-def stochastic_solutions():
-    for i in range(999):
-        mariSimSP = MaritimeSim(dist_mat=dist_mat,
-                                fuel_price_func_callback=fuel_price_func,
-                                fuel_consume_func_callback=fuel_consume_const_func,
-                                stoch_params=[STOCH_PROBS, STOCH_BUNKERING_COSTS])
-
-        final_cost_sp, fuel_costs_trip_sp, trav_bool_sp = simulate(mariSimSP, schedule=ROUTE_SCHEDULE[1:],
-                                                                   dist_mat=DIST_MAT, policy=policy_sp)
-        fuel_costs_sp.append(np.sum(fuel_costs_trip_sp))
-        costs_sp.append(final_cost_sp)
-
+def statefulsolver(name, simulation_name, dist_mat, schedule, stoch_probs, stoch_bunkering_costs, price_scenarios, price_stds, expected_prices, fixed_bunkering_cost, reg_speed, teu, speed_model, price_distribution,
+                   simulation_number, **kwargs):
+    start_time = time.time()
+    simulations = {}
+    nbsimulations = simulation_number
+    for i in tqdm(range(nbsimulations), desc='Run', position=0):
         mariSimLP = MaritimeSim(dist_mat=dist_mat,
                                 fuel_price_func_callback=fuel_price_func,
                                 fuel_consume_func_callback=fuel_consume_const_func,
-                                stoch_params=[STOCH_PROBS, STOCH_BUNKERING_COSTS])
-
-        final_cost_lp, trip_fuel_costs_lp, trav_bool_lp = simulate(mariSimLP, schedule=ROUTE_SCHEDULE[1:],
-                                                                   dist_mat=DIST_MAT, policy=policy_lp)
-        fuel_costs_lp.append(np.sum(trip_fuel_costs_lp))
-        costs_lp.append(final_cost_lp)
-
-    mean_costs_sp = np.mean(costs_sp)
-    mean_fuel_costs_sp = np.mean(fuel_costs_sp)
-
-    print(f'Stochastic solution: {mean_costs_sp}')
-    print(f'Stochastic time cost solution: {mean_costs_sp - mean_fuel_costs_sp}')
-    print(f'Stochastic fuel solution: {mean_fuel_costs_sp}')
-
-    mean_costs_lp = np.mean(costs_lp)
-    mean_fuel_costs_lp = np.mean(fuel_costs_lp)
-
-    print(f'Deterministic solution: {mean_costs_lp}')
-    print(f'Deterministic time cost solution: {mean_costs_lp - mean_fuel_costs_lp}')
-    print(f'Deterministic fuel solution: {mean_fuel_costs_lp}')
-
-
-def statefulsolver(name, simulation_name, **kwargs):
-    start_time = time.time()
-    simulations = {}
-    nbsimulations = 25
-    for i in tqdm(range(nbsimulations), desc='Run', position=0):
-        mariSimLP = MaritimeSim(dist_mat=DIST_MAT,
-                                fuel_price_func_callback=fuel_price_func,
-                                fuel_consume_func_callback=fuel_consume_const_func,
-                                stoch_params=[STOCH_PROBS, STOCH_BUNKERING_COSTS, PRICE_SCENARIOS],
-                                seed=i + 1, teu=TEU
+                                stoch_params=[stoch_probs, stoch_bunkering_costs, price_scenarios],
+                                expected_prices=expected_prices,
+                                fixed_bunkering_cost=fixed_bunkering_cost,
+                                route_schedule=schedule,
+                                dyn_vel_fuel=1,
+                                reg_speed=reg_speed,
+                                price_stds=price_stds,
+                                seed=i + 1, teu=teu, speed_model=speed_model, price_distribution=price_distribution
                                 )
         simulations[f'{i}{i}{i}{i}'] = 'STARTED'
         simulations[f'----- Simulation {i} -----'] = name * 100 + i
         simulations[f'{name * 100 + i}_FUEL PRICES '] = mariSimLP.cur_fuel_prices
 
-        final_cost_lp, _ = simulate(mariSimLP, print_bool=False, policy=policies.policy_mcts_stateful,
+        final_cost_lp, _ = simulate(mariSimLP, schedule=schedule, dist_mat=dist_mat, print_bool=False,
+                                    policy=policy_mcts_stateful,
                                     simulation_saver_dict=simulations, simulation_number=name * 100 + i)
         print(f'Cost Solution Stateful: {final_cost_lp}')
     run_time = (time.time() - start_time)
     print("--- %s seconds ---" % run_time)
     kwargs['number_of_simulations'] = nbsimulations
-    save_configs(run_time=run_time, name=name, simulation_name=simulation_name, **kwargs)
     save_config(simulations, name=f'simulations_{name}', path=PATH, now=NOW, simulation_name=simulation_name)
+    return run_time
 
 
-def linear_solver():
-    # mariSimSP = MaritimeSim(dist_mat=dist_mat,
-    #                         fuel_price_func_callback=fuel_price_func,
-    #                         fuel_consume_func_callback=fuel_consume_const_func,
-    #                         stoch_params=[STOCH_PROBS, STOCH_BUNKERING_COSTS])
-    #
-    # mariSimLP = MaritimeSim(dist_mat=dist_mat,
-    #                         fuel_price_func_callback=fuel_price_func,
-    #                         fuel_consume_func_callback=fuel_consume_const_func,
-    #                         stoch_params=[STOCH_PROBS, STOCH_BUNKERING_COSTS])
-
-    # final_cost_sp, _ = simulate(mariSimSP, schedule=ROUTE_SCHEDULE[1:], dist_mat=DIST_MAT,
-    #                             policy=policy_sp, print_bool=True)
-    mariSimLP = MaritimeSim(dist_mat=DIST_MAT,
-                            fuel_price_func_callback=fuel_price_func,
-                            fuel_consume_func_callback=fuel_consume_const_func,
-                            stoch_params=[STOCH_PROBS, STOCH_BUNKERING_COSTS]
-                            )
-    simulate(mariSimLP, schedule=ROUTE_SCHEDULE[1:], dist_mat=DIST_MAT,
-             policy=policies.policy_mcts_stateful, print_bool=True)
-
-
-if __name__ == '__main__':
-    random.seed(time.time())
-    run_id = random.randint(0, 100000)
+def run_configs(run_id, simulation_name, dist_mat, schedule, stoch_probs, stoch_bunkering_costs, price_scenarios, price_stds, expected_prices, fixed_bunkering_cost, reg_speed,teu, speed_model, price_distribution,
+                simulation_number, kwargs):
+    os.environ['SIMULATION_NAME'] = simulation_name
+    os.environ['FUEL_CAPACITY'] = str(kwargs['FUEL_CAPACITY'])
     i = run_id * 100
-    simulation_name = '4Port'
-    os.environ['simulation_name'] = simulation_name
-    for min_action in ['None']:
-        for sim_depth_limit in [7]:
-            for decreasing_iter in [True]:
-                for early_stop in [True]:
-                    for exp_const in [5000, 35000, 50000, 65000, 150000]:  # , 12000, 15000, 20000]:
-                        for max_iter in [6000]:
-                            for expl_const_decay in [0.9998]:  # , 0.9993, 0.9991]:
-                                for alg in ['ProgressiveWideningSolver','DPWSolver']:
-                                    for opt_act in ['MIN_REWARD', 'MIN_REWARD_SOME_VISITED']:
-                                        for min_set_size in [6, 11, 16, 21]:
-                                            os.environ['MIN_SET_SIZE_REFUEL'] = str(min_set_size)
-                                        if exp_const == 1000000:
-                                            expl_const_decay = 0.99965
-                                        os.environ['EARLY_STOP'] = str(early_stop)
-                                        os.environ['MIN_ACTION'] = str(min_action)
+    for opt_act in kwargs['OPT_ACT']:
+        for decreasing_iter in kwargs['DECREASING_ITER']:
+            for early_stop in kwargs['EARLY_STOP']:
+                for exp_const in kwargs['EXP_CONST']:
+                    for max_iter in kwargs['MAX_ITERATION']:
+                        for expl_const_decay in kwargs['EXP_CONST_DECAY']:
+                            for min_set_size in kwargs['MIN_SET_SIZE']:
+                                for alg in kwargs['ALGORITHM']:
+                                    for heuritic in kwargs['HEURISTIC']:
+                                        os.environ['HEURISTIC'] = str(heuritic)
                                         os.environ['ALGORITHM'] = alg
-                                        os.environ['SIMULATION_DEPTH_LIMIT'] = str(sim_depth_limit)
+                                        os.environ['EARLY_STOP'] = str(early_stop)
                                         os.environ['EXPLORATION_CONSTANT'] = str(exp_const)
                                         os.environ['MAX_ITERATION'] = str(max_iter)
-                                        os.environ['EARLY_STOP'] = str(early_stop)
                                         os.environ['DECREASING_ITER'] = str(decreasing_iter)
                                         os.environ['OPTIMAL_ACTION_POLICY'] = str(opt_act)
                                         os.environ['EXP_CONST_DECAY'] = str(expl_const_decay)
-                                        if alg == 'NAIVE':
+
+                                        if alg =='NAIVE':
                                             i += 1
-                                            os.environ['FORCE_0_FUEL'] = str(False)
-                                            os.environ['DPW_EXPLORATION'] = str(0)
-                                            os.environ['DPW_ALPHA'] = str(0)
-                                            statefulsolver(i, **os.environ)
-
-                                        else:
-                                            for dpw_enum, dpw_alpha_refuel in enumerate(
-                                                    [0.35]):  # , 0.8, 0.9, 0.95]:
-                                                for dpw_enum2, dpw_exploration_refuel in enumerate(
-                                                        [4]):  # , 0.8, 0.9, 0.95]:
-                                                    for force in [True]:
-                                                        print(i - run_id * 100)
-                                                        if min_set_size == 6:
-                                                            dpw_alpha_refuel = 0.5
-                                                            dpw_exploration_refuel = 6
-
+                                            print(heuritic, alg, early_stop, exp_const, max_iter, opt_act, expl_const_decay)
+                                            run_time = statefulsolver(i, simulation_name, dist_mat, schedule,
+                                                                      stoch_probs, stoch_bunkering_costs,
+                                                                      price_scenarios, price_stds, expected_prices,
+                                                                      fixed_bunkering_cost, reg_speed, teu, speed_model,
+                                                                      price_distribution,simulation_number, **os.environ)
+                                            save_configs(run_time=run_time, name=i,
+                                                         simulation_name=simulation_name, **os.environ)
+                                        if alg != 'NAIVE':
+                                            for dpw_alpha in kwargs['DPW_ALPHA']:
+                                                for dpw_exp in kwargs['DPW_EXP']:
+                                                    os.environ['DPW_EXPLORATION'] = str(dpw_exp)
+                                                    os.environ['DPW_ALPHA'] = str(dpw_alpha)
+                                                    os.environ['MIN_SET_SIZE'] = str(min_set_size)
+                                                    if alg =='DPWSolver':
+                                                        for probabilistic in kwargs['DPW_PROBABILISTIC']:
+                                                            print(heuritic, alg, early_stop, exp_const, max_iter, opt_act, expl_const_decay, dpw_exp, dpw_alpha, min_set_size, probabilistic)
+                                                            os.environ['DPW_PROBABILISTIC'] = str(probabilistic)
+                                                            i += 1
+                                                            run_time = statefulsolver(i, simulation_name, dist_mat, schedule,
+                                                                                      stoch_probs, stoch_bunkering_costs,
+                                                                                      price_scenarios, price_stds, expected_prices,
+                                                                                      fixed_bunkering_cost, reg_speed, teu, speed_model,
+                                                                                      price_distribution, simulation_number, **os.environ)
+                                                            save_configs(run_time=run_time, name=i, simulation_name=simulation_name, **os.environ)
+                                                    else:
+                                                        print(heuritic, alg, early_stop, exp_const, max_iter, opt_act, expl_const_decay, dpw_exp, dpw_alpha, min_set_size)
                                                         i += 1
-                                                        os.environ['FORCE_0_FUEL'] = str(force)
-                                                        os.environ['DPW_EXPLORATION'] = str(
-                                                            dpw_exploration_refuel)
-                                                        os.environ['DPW_ALPHA'] = str(dpw_alpha_refuel)
-                                                        statefulsolver(i, **os.environ)
-                    parser(now=NOW, path=PATH, simulation_name=simulation_name)
+                                                        run_time = statefulsolver(i, simulation_name, dist_mat, schedule,
+                                                                                  stoch_probs, stoch_bunkering_costs,
+                                                                                  price_scenarios, price_stds, expected_prices,
+                                                                                  fixed_bunkering_cost, reg_speed, teu, speed_model,
+                                                                                  price_distribution, simulation_number, **os.environ)
+                                                        save_configs(run_time=run_time, name=i, simulation_name=simulation_name, **os.environ)
+
+
+
+if __name__ == '__main__':
+    from common.PORT4.multi_1 import param_values2, ROUTE_SCHEDULE, save_configs, simulation_name, STOCH_PROBS, \
+        STOCH_BUNKERING_COSTS, PRICE_PERCENTAGES, FIXED_BUNKERING_COSTS, DIST_MAT, EXPECTED_BUNKERING_COSTS, \
+        REGULAR_SPEED, USE_SPEED, TEU, FUEL_COST_METHOD, PRICE_DISTRIBUTION, PRICE_STDS
+
+    parser(now=NOW, path=PATH, simulation_name=simulation_name)
+    os.environ['USE_SPEED'] = str(USE_SPEED)
+    os.environ['FUEL_COST_METHOD'] = FUEL_COST_METHOD
+    schedule = ROUTE_SCHEDULE[1:]
+    random.seed(time.time())
+    run_id = random.randint(0, 100000)
+    run_configs(run_id, simulation_name=simulation_name, dist_mat=DIST_MAT, schedule=schedule, stoch_probs=STOCH_PROBS,
+                stoch_bunkering_costs=STOCH_BUNKERING_COSTS, price_scenarios=PRICE_PERCENTAGES, price_stds=PRICE_STDS,
+                expected_prices=EXPECTED_BUNKERING_COSTS, fixed_bunkering_cost=FIXED_BUNKERING_COSTS,
+                reg_speed=REGULAR_SPEED, teu=TEU, speed_model=USE_SPEED, price_distribution=PRICE_DISTRIBUTION, simulation_number=param_values2['SIMULATION_NUMBER'],
+                kwargs=param_values2)
+    parser(now=NOW, path=PATH, simulation_name=simulation_name)
+
+    from common.PORT4.multi_2 import param_values, ROUTE_SCHEDULE, save_configs, simulation_name, STOCH_PROBS, \
+        STOCH_BUNKERING_COSTS, PRICE_PERCENTAGES, FIXED_BUNKERING_COSTS, DIST_MAT, EXPECTED_BUNKERING_COSTS, \
+        REGULAR_SPEED, USE_SPEED, TEU, FUEL_COST_METHOD, PRICE_DISTRIBUTION, PRICE_STDS
+
+    os.environ['USE_SPEED'] = str(USE_SPEED)
+    os.environ['FUEL_COST_METHOD'] = FUEL_COST_METHOD
+    schedule = ROUTE_SCHEDULE[1:]
+    random.seed(time.time())
+    run_id = random.randint(0, 100000)
+    run_configs(run_id, simulation_name=simulation_name, dist_mat=DIST_MAT, schedule=schedule, stoch_probs=STOCH_PROBS,
+                stoch_bunkering_costs=STOCH_BUNKERING_COSTS, price_scenarios=PRICE_PERCENTAGES, price_stds=PRICE_STDS,
+                expected_prices=EXPECTED_BUNKERING_COSTS, fixed_bunkering_cost=FIXED_BUNKERING_COSTS,
+                reg_speed=REGULAR_SPEED, teu=TEU, speed_model=USE_SPEED, price_distribution=PRICE_DISTRIBUTION, simulation_number=param_values['SIMULATION_NUMBER'],
+                kwargs=param_values)
+    parser(now=NOW, path=PATH, simulation_name=simulation_name)
+
+    from common.PORT7.multi_1 import param_values, ROUTE_SCHEDULE, save_configs, simulation_name, STOCH_PROBS, \
+        STOCH_BUNKERING_COSTS, PRICE_PERCENTAGES, FIXED_BUNKERING_COSTS, DIST_MAT, EXPECTED_BUNKERING_COSTS, \
+        REGULAR_SPEED, USE_SPEED, TEU, FUEL_COST_METHOD, PRICE_DISTRIBUTION, PRICE_STDS
+
+    os.environ['USE_SPEED'] = str(USE_SPEED)
+    os.environ['FUEL_COST_METHOD'] = FUEL_COST_METHOD
+    schedule = ROUTE_SCHEDULE[1:]
+    random.seed(time.time())
+    run_id = random.randint(0, 100000)
+    run_configs(run_id, simulation_name=simulation_name, dist_mat=DIST_MAT, schedule=schedule, stoch_probs=STOCH_PROBS,
+                stoch_bunkering_costs=STOCH_BUNKERING_COSTS, price_scenarios=PRICE_PERCENTAGES, price_stds=PRICE_STDS,
+                expected_prices=EXPECTED_BUNKERING_COSTS, fixed_bunkering_cost=FIXED_BUNKERING_COSTS,
+                reg_speed=REGULAR_SPEED, teu=TEU, speed_model=USE_SPEED, price_distribution=PRICE_DISTRIBUTION, simulation_number=param_values['SIMULATION_NUMBER'],
+                kwargs=param_values)
+    parser(now=NOW, path=PATH, simulation_name=simulation_name)
+
+    from common.PORT7.multi_2 import param_values, ROUTE_SCHEDULE, save_configs, simulation_name, STOCH_PROBS, \
+        STOCH_BUNKERING_COSTS, PRICE_PERCENTAGES, FIXED_BUNKERING_COSTS, DIST_MAT, EXPECTED_BUNKERING_COSTS, \
+        REGULAR_SPEED, USE_SPEED, TEU, FUEL_COST_METHOD, PRICE_DISTRIBUTION, PRICE_STDS
+
+    os.environ['USE_SPEED'] = str(USE_SPEED)
+    os.environ['FUEL_COST_METHOD'] = FUEL_COST_METHOD
+    schedule = ROUTE_SCHEDULE[1:]
+    random.seed(time.time())
+    run_id = random.randint(0, 100000)
+    run_configs(run_id, simulation_name=simulation_name, dist_mat=DIST_MAT, schedule=schedule, stoch_probs=STOCH_PROBS,
+                stoch_bunkering_costs=STOCH_BUNKERING_COSTS, price_scenarios=PRICE_PERCENTAGES, price_stds=PRICE_STDS,
+                expected_prices=EXPECTED_BUNKERING_COSTS, fixed_bunkering_cost=FIXED_BUNKERING_COSTS,
+                reg_speed=REGULAR_SPEED, teu=TEU, speed_model=USE_SPEED, price_distribution=PRICE_DISTRIBUTION, simulation_number=param_values['SIMULATION_NUMBER'],
+                kwargs=param_values)
+    parser(now=NOW, path=PATH, simulation_name=simulation_name)

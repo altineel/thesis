@@ -1,3 +1,4 @@
+import os
 import random
 from mcts4py_new.Types import *
 from mcts4py_new.Solver import *
@@ -21,6 +22,10 @@ class ProgressiveWideningSolver(StatefulSolver):
                  dpw_exploration: float = None,
                  dpw_alpha: float = None
                  ):
+        self.selection_time = 0
+        self.backp_time = 0
+        self.expansion_time = 0
+        self.simulation_time = 0
         self.dpw_exploration = dpw_exploration
         self.dpw_alpha = dpw_alpha
         super().__init__(mdp, simulation_depth_limit, discount_factor, exploration_constant,
@@ -31,9 +36,10 @@ class ProgressiveWideningSolver(StatefulSolver):
         current_node = node
 
         while True:
-            if current_node.n %50 ==49:
+            if current_node.n % 50 == 49:
                 current_node.valid_actions = self.mdp.actions(current_node.state, current_node.n, iteration_number,
-                                                          self.max_iteration, dpw_exploration=self.dpw_exploration, dpw_alpha=self.dpw_alpha)
+                                                              self.max_iteration, dpw_exploration=self.dpw_exploration,
+                                                              dpw_alpha=self.dpw_alpha)
             # If the node is terminal, return it
             if self.mdp.is_terminal(current_node.state):
                 return current_node
@@ -80,11 +86,11 @@ class ProgressiveWideningSolver(StatefulSolver):
             if self.verbose:
                 print("Terminal state reached")
             return reward
-
         current_state = node.state
         discount = self.discount_factor ** depth
         valid_actions = self.mdp.actions(current_state, node.n, iteration_number=iteration_number,
-                                         max_iteration_number=self.max_iteration, dpw_alpha=self.dpw_alpha, dpw_exploration=self.dpw_exploration,
+                                         max_iteration_number=self.max_iteration, dpw_alpha=self.dpw_alpha,
+                                         dpw_exploration=self.dpw_exploration,
                                          min_action=True)
         random_action = random.choice(valid_actions)
         new_state = self.mdp.transition(current_state, random_action)
@@ -112,6 +118,7 @@ class ProgressiveWideningSolver(StatefulSolver):
     def run_search_iteration(self, iteration_number=None):
         # Selection
         root_node = self.root()
+        start_time = time.time()
         best = self.select(root_node, iteration_number)
 
         if self.verbose:
@@ -121,24 +128,40 @@ class ProgressiveWideningSolver(StatefulSolver):
         # Expansion
         expanded = self.expand(best, iteration_number)
 
+        self.selection_time += (time.time() - start_time) * 100000
         if self.verbose:
             print("Expanded to:")
             self.display_node(expanded)
 
         # Simulation
+        start_time = time.time()
         simulated_reward = self.simulate(expanded, iteration_number=iteration_number)
+        self.simulation_time += (time.time() - start_time) * 100000
 
         if self.verbose:
             print(f"Simulated reward: {simulated_reward}")
 
         # Backpropagation
+        start_time = time.time()
         self.backpropagate(expanded, simulated_reward)
+        self.backp_time += (time.time() - start_time) * 100000
+        # if iteration_number % 2000 == 1:
+        #     print('------------------------  ')
+        #     print(iteration_number)
+        #     print('SELECTION TIME:', round((self.selection_time / 50)))
+        #     print('EXPANSION TIME:', round((self.expansion_time / 50)))
+        #     print('SIMULATION TIME:', round((self.simulation_time / 50)))
+        #     print('BACKPROPOG TIME:', round((self.backp_time / 50)))
+        #     self.selection_time, self.time1, self.time2, self.expansion_time, self.simulation_time, self.backp_time =\
+        #         0, 0, 0, 0, 0, 0
+        #     print('------------------------  ')
         return simulated_reward
 
     def create_node(self, parent: Optional[StateNode[TState, TAction]], inducing_action: Optional[TAction],
                     state: TState, number_of_visits=0, iteration_number=0) -> StateNode[TState, TAction]:
 
-        valid_actions = self.mdp.actions(state, number_of_visits, iteration_number, self.max_iteration, dpw_exploration=self.dpw_exploration, dpw_alpha=self.dpw_alpha)
+        valid_actions = self.mdp.actions(state, number_of_visits, iteration_number, self.max_iteration,
+                                         dpw_exploration=self.dpw_exploration, dpw_alpha=self.dpw_alpha)
         is_terminal = self.mdp.is_terminal(state)
         state_node = StateNode(parent, inducing_action, state, valid_actions, is_terminal)
 
