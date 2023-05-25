@@ -1,5 +1,5 @@
-import policies
-from policies.policy_ss import *
+
+#from policies.policy_ss import *
 from common import *
 import os
 import csv
@@ -7,11 +7,11 @@ from tqdm import tqdm
 
 policy_library_name = 'policy_library_dpw'
 def simulate(mariSim,
-             schedule=ROUTE_SCHEDULE[1:],
-             dist_mat=DIST_MAT,
-             policy=policy_ss,
+             schedule=None,
+             dist_mat=None,
+             policy=None,
              print_bool=False,
-             exp_arriv_time_rng=EXP_ARRIV_TIME_RNG,
+             exp_arriv_time_rng=None,
              late_time_penalty=LATE_ARRIVAL_PENALTY,
              early_time_penalty=EARLY_ARRIVAL_PENALTY,
              simulation_saver_dict=None,
@@ -33,7 +33,7 @@ def simulate(mariSim,
         departure_time = mariSim.time
 
         current_port = mariSim.current_n
-        if n_to == ROUTE_SCHEDULE[-1]:
+        if n_to == schedule[-1]:
             n_to = 0
         if print_bool:
             print("TRAVERSAL #####")
@@ -57,9 +57,9 @@ def simulate(mariSim,
             simulation_saver_dict[
                 f'{simulation_number}_FUEL LEVEL BEFORE: {mariSim.current_n}'] = mariSim.fuel_level
         if speed is not None:
-            trav_bool = mariSim.traverse(n=ROUTE_SCHEDULE[i], n_to=n_to, speed=speed)
+            trav_bool = mariSim.traverse(n=dist_mat[i], n_to=n_to, speed=speed)
         else:
-            trav_bool = mariSim.traverse(n=ROUTE_SCHEDULE[i], n_to=n_to)
+            trav_bool = mariSim.traverse(n=dist_mat[i], n_to=n_to)
         if mariSim.fuel_level == 14:
             a = 0
         if not trav_bool:
