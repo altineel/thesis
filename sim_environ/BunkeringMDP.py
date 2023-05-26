@@ -12,7 +12,7 @@ class BunkeringAction():
         self.speed, self.refuel_amount, self.next_port = speed, refuel_amount, next_port
 
     def __str__(self) -> str:
-        return f"Speed: {self.speed}, Ref: {self.refuel_amount}, NextPort: {self.next_port}, 'Speed : {self.speed}"
+        return f"Speed: {self.speed}, Ref: {self.refuel_amount}, NextPort: {self.next_port}, Speed : {self.speed}"
 
     def __eq__(self, __o):
         if isinstance(__o, BunkeringAction):
@@ -30,10 +30,9 @@ class BunkeringAction():
 
 
 class BunkeringState():
-    def __init__(self, port: int, fuel_amount, arrival_time, speed=INITIAL_SPEED, price_perc=1, price=None, is_terminal=False, fixed_bunkering_cost=None):
+    def __init__(self, port: int, fuel_amount, arrival_time, speed=None, price_perc=1, price=None, is_terminal=False, fixed_bunkering_cost=None):
         self.port = port
         self.fuel_amount = fuel_amount
-        self.speed = speed
         self.price = price
         self.price_perc = price_perc
         self.fixed_bcost = fixed_bunkering_costs(port, fixed_bunkering_cost)
@@ -43,21 +42,20 @@ class BunkeringState():
 
     def __eq__(self, __o: object) -> bool:
         if isinstance(__o, BunkeringState):
-            return __o.port == self.port and __o.fuel_amount == self.fuel_amount and __o.speed == self.speed and \
+            return __o.port == self.port and __o.fuel_amount == self.fuel_amount and  \
                    __o.arrival_time == self.arrival_time and __o.price == self.price
         return False
 
     def __str__(self) -> str:
-        return f'Port: {self.port}, Fuel Amount: {self.fuel_amount}, Arrival Time: {self.arrival_time}, ' \
-               f'Speed: {self.speed}, Price: {self.price}'
+        return f'Port: {self.port}, Fuel Amount: {self.fuel_amount}, Arrival Time: {self.arrival_time}, Price: {self.price}'
 
     def is_action_valid(self, action: BunkeringAction, dist_mat, route_schedule, fuel_capacity, k1, k2) -> bool:
         if action.refuel_amount + self.fuel_amount <= fuel_capacity:
-            if not self.is_terminal:
-                if action.next_port == route_schedule[self.port]:
-                    if self.fuel_amount + action.refuel_amount >= fuel_consume_const_func(
-                            dist_mat[self.port, route_schedule[self.port]], action.speed, k1, k2):
-                        return True
+            if int(os.getenv('MIN_SPEED')) <= action.speed <= int(os.getenv('MAX_SPEED')):
+                if not self.is_terminal:
+                    if action.next_port == route_schedule[self.port]:
+                        if self.fuel_amount + action.refuel_amount >= fuel_consume_const_func(dist_mat[self.port, route_schedule[self.port]], action.speed, k1, k2):
+                            return True
         return False
 
     def resolve_action(self, action: BunkeringAction, dist_mat, route_schedule, arrival_time, fuel_capacity,
@@ -70,30 +68,36 @@ class BunkeringState():
                                   speed=action.speed, arrival_time=arrival_time, price=new_price, price_perc=new_perc, is_terminal=is_terminal,
                                   fixed_bunkering_cost=fixed_bunkering_cost)
 
-    def calculate_reward(self, refuel_amount, exp_arriv_time_ring=None):
+    def calculate_reward(self, action, distance, exp_arriv_time_ring=None):
         reward = 0
-        reward -= refuel_amount * self.price
-        reward -= self.fixed_bcost if refuel_amount > 0 else 0
-
-        # SPEED AND ARRIVAL TIME CONSIDERATIONS ##
+        reward -= action.refuel_amount * self.price
+        reward -= self.fixed_bcost if action.refuel_amount > 0 else 0
+        exp_arriv_time_ring = os.getenv('EXP_ARRIV_TIME_RNG')
+        exp_arrv_time_list = []
+        for i, x in enumerate(exp_arriv_time_ring.split('[')):
+            if i < 2:
+                pass
+            else:
+                a = [float(x.split(']')[0].split(',')[0]), float(x.split(']')[0].split(',')[1])]
+                exp_arrv_time_list.append(a)
+                # SPEED AND ARRIVAL TIME CONSIDERATIONS ##
         if os.getenv('USE_SPEED') == 'True':
-            upper_arrival_time_dif = max(0, self.arrival_time - exp_arriv_time_ring[self.port][1])
-            # lower_arrival_time_dif = max(0, EXP_ARRIV_TIME_RNG[self.port][0] - self.arrival_time)
-            reward -= pow(upper_arrival_time_dif, KAPPA) * LATE_ARRIVAL_PENALTY
-            # reward -= pow(lower_arrival_time_dif, KAPPA) * EARLY_ARRIVAL_PENALTY
+            next_arrival_time = self.arrival_time + travel_time_function(distance,action.speed)
+            upper_arrival_time_dif = max(0, next_arrival_time - exp_arrv_time_list[action.next_port][1])
+            lower_arrival_time_dif = max(0, exp_arrv_time_list[action.next_port][0] - next_arrival_time)
+            reward -= upper_arrival_time_dif * float(os.getenv('LATE_ARRIVAL_PENALTY'))
+            reward -= lower_arrival_time_dif * float(os.getenv('EARLY_ARRIVAL_PENALTY'))
         # SPEED AND ARRIVAL TIME CONSIDERATIONS ##
-
         # FUEL REMAINING CONSIDERATIONS ##
         # if self.fuel_amount < MIN_FUEL_ALLOWANCE:
         #   reward -= (MIN_FUEL_ALLOWANCE - self.fuel_amount) * KAPPA2
-        reward = math.inf if self.fuel_amount + refuel_amount < 0 else reward
-
+        reward = math.inf if self.fuel_amount + action.refuel_amount < 0 else reward
         return reward
 
-
 class BunkeringMDP(MDP[BunkeringState, BunkeringAction]):
-    def __init__(self, dist_matrix, schedule, max_speed=MAX_SPEED, fuel_capacity=None, price_percentages=None,
+    def __init__(self, dist_matrix, schedule, max_speed=None, fuel_capacity=None, price_percentages=None,
                  state=None, fuel_price_list=None, price_distribution=None, price_stds=None, fixed_bunkering_cost=None, teu=7000, min_set_size_speed=1):
+        self.max_speed = int(os.getenv('MAX_SPEED'))
         self.fuel_price_list = fuel_price_list
         self.price_distribution = price_distribution
         self.price_stds = price_stds
@@ -108,11 +112,10 @@ class BunkeringMDP(MDP[BunkeringState, BunkeringAction]):
         self.starting_state = state
         self.k1, self.k2 = k_coefficients(teu)
         self.time = 0
-        self.max_speed = max_speed
         self.fuel_capacity = fuel_capacity
         self.price_percentages = price_percentages
-        self.min_set_size_speed = min_set_size_speed
-        self.min_set_size_refuel = int(os.getenv('MIN_SET_SIZE', 0))
+        self.min_set_size_speed = int(os.getenv('MIN_SET_SIZE_SPEED', 0))
+        self.min_set_size_refuel = int(os.getenv('MIN_SET_SIZE_REFUEL', 0))
         self.min_set_size = self.min_set_size_refuel * self.min_set_size_speed
 
     def is_terminal(self, state: BunkeringState) -> bool:
@@ -122,7 +125,7 @@ class BunkeringMDP(MDP[BunkeringState, BunkeringAction]):
         return self.starting_state
 
     def reward(self, current_state: Optional[BunkeringState], action: Optional[BunkeringAction]) -> float:
-        return current_state.calculate_reward(action.refuel_amount)
+        return current_state.calculate_reward(action, distance=self.dist_mat[current_state.port][action.next_port])
 
     def get_terminal_state(self, departure_time, port):  # change where it is used to use this function
         if departure_time != 1:

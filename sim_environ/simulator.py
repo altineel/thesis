@@ -12,8 +12,8 @@ def simulate(mariSim,
              policy=None,
              print_bool=False,
              exp_arriv_time_rng=None,
-             late_time_penalty=LATE_ARRIVAL_PENALTY,
-             early_time_penalty=EARLY_ARRIVAL_PENALTY,
+             late_time_penalty=0.0,
+             early_time_penalty=0.0,
              simulation_saver_dict=None,
              simulation_number=None
              ):

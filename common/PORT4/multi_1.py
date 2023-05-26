@@ -31,7 +31,7 @@ param_values = {
 param_values2 = {
     'DECREASING_ITER': [False],
     'EARLY_STOP': [True],
-    'EXP_CONST': [1000, 10000, 25000, 50000, 100000, 500000, 1000000],
+    'EXP_CONST': [ 500000, 1000000], #1000, 10000, 25000, 50000, 100000,
     'MAX_ITERATION': [3000],
     'EXP_CONST_DECAY': [0.9998, 0.9990],
     'ALGORITHM': ['DPWSolver', 'NAIVE', 'ProgressiveWideningSolver'],

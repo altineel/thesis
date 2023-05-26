@@ -21,13 +21,12 @@ class MaritimeSim():
                  start_time=0.0,
                  time_penalty_cost=0.0,
                  exp_arrival_time_ranges=None,
-                 late_arriv_penalty=LATE_ARRIVAL_PENALTY,
-                 early_arriv_penalty=EARLY_ARRIVAL_PENALTY,
+                 late_arriv_penalty=0.0,
+                 early_arriv_penalty=0.0,
                  dyn_vel_fuel = None,
                  reg_speed= None,
                  seed=None,
                  teu=7000,
-                 speed_power_coefficient=1,
                  speed_model=False,
                  price_distribution=None,
                  price_stds=None
@@ -58,7 +57,6 @@ class MaritimeSim():
         self.reg_speed = reg_speed
         self.dyn_vel_fuel =dyn_vel_fuel
         self.k1, self.k2 = k_coefficients(self.teu)
-        self.speed_power_coefficient = speed_power_coefficient
         self.speed_model = speed_model
         self.price_distribution = price_distribution
         self.price_stds = price_stds

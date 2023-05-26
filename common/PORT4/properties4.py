@@ -1,11 +1,9 @@
 from common import *
 
 # THESE ARE FOR FUTURE CONFIGURATIONS #
-USE_SPEED = False
 SPEED_POWER_COEF = 1.0
 TEU = 7000
 MIN_SET_SIZE_SPEED = 1
-EXP_ARRIV_TIME_RNG = None
 # MIN_SET_SIZE = MIN_SET_SIZE_SPEED * MIN_SET_SIZE_REFUEL
 USE_TEU = False
 REGULAR_SPEED = 1
@@ -21,7 +19,7 @@ FUEL_CAPACITY = 50
 FUEL_COST_METHOD  = 'SIMPLE'
 PRICE_DISTRIBUTION = 'multinomial'
 
-
+USE_SPEED = False
 
 def dist_matrix(start, end):
     if start == (len(DIST_MAT)-1) and end == (len(DIST_MAT)):
@@ -53,6 +51,3 @@ def save_configs(name, simulation_name=None, **kwargs):
     else:
         save_config(variables, name=f'config_{name}', path=PATH, now=NOW)
 
-
-if USE_SPEED:
-    assert len(EXP_ARRIV_TIME_RNG) == len(ROUTE_SCHEDULE) - 1, "Assert: ensure there are enough time constraints per port in the schedule."

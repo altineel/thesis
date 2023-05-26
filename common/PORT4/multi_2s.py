@@ -1,0 +1,113 @@
+import random
+import time
+import os
+from common.PORT4.properties4 import *
+
+FIXED_BUNKERING_COSTS = [32, 74, 38, 41]
+PRICE_PERCENTAGES = [0.75, 0.85, 1, 1.15, 1.25]
+EXPECTED_BUNKERING_COSTS = [15, 9.5, 18, 23]
+STOCH_BUNKERING_COSTS, PRICE_SCENARIOS = generate_prices_n_scenarios(p0=EXPECTED_BUNKERING_COSTS,
+                                                                     s0=[1],
+                                                                     sn=PRICE_PERCENTAGES)
+FUEL_COST_METHOD = 'NONLINEAR'
+STOCH_PROBS = [1 / len(STOCH_BUNKERING_COSTS)] * len(STOCH_BUNKERING_COSTS)
+PRICE_STDS = None
+simulation_name = '4PORT_SPEED2'
+USE_SPEED = True
+param_values = {
+    'DECREASING_ITER': [False],
+    'EARLY_STOP': [True],
+    'EXP_CONST': [10, 100, 250, 500, 1000, 5000, 10000],
+    'MAX_ITERATION': [20, 50, 100, 200, 500],
+    'EXP_CONST_DECAY': [0.9998, 0.9990],
+    'ALGORITHM': [ 'ProgressiveWideningSolver'],
+    'OPT_ACT': ['MIN_REWARD'],
+    'MIN_SET_SIZE_REFUEL': [6],
+    'MIN_SET_SIZE_SPEED' : [5, 8 ],
+    'DPW_ALPHA': [0.2, 0.4],
+    'DPW_EXP': [4],
+    'HEURISTIC': [True, False],
+    'FUEL_CAPACITY': 700,
+    'SIMULATION_NUMBER': 20,
+    'DPW_PROBABILISTIC': [True]
+}
+
+param_values2 = {
+    'DECREASING_ITER': [False],
+    'EARLY_STOP': [True],
+    'EXP_CONST': [100, 250, 500, 1000, 5000, 10000],
+    'MAX_ITERATION': [20, 50, 100, 200, 500],
+    'EXP_CONST_DECAY': [0.9998, 0.9990],
+    'ALGORITHM': [ 'DPWSolver'],
+    'OPT_ACT': ['MIN_REWARD'],
+    'MIN_SET_SIZE_REFUEL': [6],
+    'MIN_SET_SIZE_SPEED' : [5, 8 ],
+    'DPW_ALPHA': [0.2, 0.4],
+    'DPW_EXP': [4],
+    'HEURISTIC': [True, False],
+    'FUEL_CAPACITY': 700,
+    'SIMULATION_NUMBER': 20,
+    'DPW_PROBABILISTIC': [True]
+}
+
+
+param_values3 = {
+    'DECREASING_ITER': [False],
+    'EARLY_STOP': [True],
+    'EXP_CONST': [25000, 50000, 100000, 500000, 1000000],
+    'MAX_ITERATION': [3000],
+    'EXP_CONST_DECAY': [0.9998, 0.9990],
+    'ALGORITHM': ['DPWSolver', 'NAIVE', 'ProgressiveWideningSolver'],
+    'OPT_ACT': ['MIN_REWARD'],
+    'MIN_SET_SIZE_REFUEL': [6],
+    'MIN_SET_SIZE_SPEED' : 3,
+    'DPW_ALPHA': [0.2, 0.4],
+    'DPW_EXP': [4],
+    'HEURISTIC': [True, False],
+    'FUEL_CAPACITY': 50,
+    'SIMULATION_NUMBER': 20,
+    'DPW_PROBABILISTIC': [True, False]
+}
+
+REGULAR_SPEED = 15
+
+EXP_TRAVEL_TIME = np.array([ DIST_MAT[i][i +1] if i <len(DIST_MAT)-1 else  DIST_MAT[i][0] for i in range(len(DIST_MAT))]) / REGULAR_SPEED
+CUM_TRAVEL_TIME = np.cumsum(EXP_TRAVEL_TIME)
+REL_TIME_DIFFS = np.array(
+    [[-0.5, 0.25], [-0.5, 0.23], [-0.5, 0.27], [-0.5, 0.3]])
+EXP_ARRIV_TIME_RNG = [[x[0] + x[1][0], x[0] + x[1][1]] for x in zip(CUM_TRAVEL_TIME, REL_TIME_DIFFS)]
+INITIAL_SPEED = 1
+
+EARLY_ARRIVAL_PENALTY = 0
+MAX_SPEED = 30
+LATE_ARRIVAL_PENALTY = 50.0
+MIN_SPEED = 1
+
+if USE_SPEED:
+    assert len(EXP_ARRIV_TIME_RNG) == len(ROUTE_SCHEDULE) - 1, "Assert: ensure there are enough time constraints per port in the schedule."
+
+
+def save_configs(name, simulation_name=None, **kwargs):
+    variables = {}
+    variables['DIST_MAT'] = DIST_MAT
+    # variables['EARLY_STOP'] = EARLY_STOP
+    variables['EPSILON'] = EPSILON
+    variables['FUEL_CAPACITY'] = FUEL_CAPACITY
+    variables['LAST_ITERATIONS_NUMBER'] = LAST_ITERATIONS_NUMBER
+    variables['MIN_ITERATION'] = MIN_ITERATION
+    variables['PRICE_DISTRIBUTION'] = PRICE_DISTRIBUTION
+    variables['SIMULATION_DEPTH_LIMIT'] = SIMULATION_DEPTH_LIMIT
+    variables['USE_SPEED'] = USE_SPEED
+    if USE_SPEED:
+        variables['SPEED_POWER_COEF'] = SPEED_POWER_COEF
+        variables['TEU'] = TEU
+        variables['MIN_SET_SIZE_SPEED'] = MIN_SET_SIZE_SPEED
+        variables['USE_TEU'] = USE_TEU
+    # variables['DECREASING_EXPLORATION_FACTOR'] = DECREASING_EXPLORATION_FACTOR
+    for m in kwargs:
+        variables[m] = kwargs[m]
+    if simulation_name:
+        save_config(variables, name=f'config_{name}', path=PATH, now=NOW, simulation_name=simulation_name)
+    else:
+        save_config(variables, name=f'config_{name}', path=PATH, now=NOW)
+
